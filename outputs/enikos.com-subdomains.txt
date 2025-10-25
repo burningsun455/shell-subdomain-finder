@@ -1,0 +1,15 @@
+api count exceeded - increase quota with membership
+blog.enikos.com
+emp-scalr.enikos.com
+enikos.com
+enikos.com\nenikos.com
+enikos.com\nwww.enikos.com
+fernandez-tyler-audience.enikos.com
+m.enikos.com
+mx0.enikos.com
+news.enikos.com
+root.fernandez-tyler-audience.enikos.com
+smtp.comune.enikos.com
+wildcard.comune.enikos.com
+wildcard.enikos.com
+www.enikos.com

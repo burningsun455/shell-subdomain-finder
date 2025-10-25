@@ -1,0 +1,52 @@
+Bagus — pesannya jelas: script minta flag -i (input file). Jalankan salah satu contoh berikut dari direktori /c/doda/SubdomainFinder:
+
+
+#NEW - Contoh pakai (recommended)
+
+./subdomainfinder.sh -i domains.txt
+./subdomainfinder.sh -i domains.txt --resolve
+./subdomainfinder.sh -i domains.txt --http-probe
+./subdomainfinder.sh -i domains.txt --http-probe --title
+./subdomainfinder.sh -i domains.txt --resolve --http-probe --title --format csv -o outputs/all.csv
+./subdomainfinder.sh -i domains.txt -w wordlist.txt --resolve
+./subdomainfinder.sh -i domains.txt --only-new
+
+
+Perintah langsung (pakai domains.txt yang ada)
+# pakai bash
+bash subdomainfinder.sh -i domains.txt
+
+# atau langsung executable (jika sudah executable)
+./subdomainfinder.sh -i domains.txt
+
+Simpan hasil ke file tertentu
+bash subdomainfinder.sh -i domains.txt -o outputs/my-subdomains.txt
+
+Mode quiet (lebih ringkas output)
+bash subdomainfinder.sh -i domains.txt -q
+
+Cek isi domains.txt (pastikan ada domain, satu per baris)
+cat domains.txt
+# contoh isi yang valid:
+# example.com
+# contoh.id
+
+Jika file tidak executable, berikan permission (opsional di Git Bash)
+chmod +x subdomainfinder.sh
+./subdomainfinder.sh -i domains.txt
+
+Lihat hasil setelah selesai
+ls outputs
+tail -n 100 outputs/all-subdomains.txt
+# atau jika kamu pakai -o filename:
+tail -n 100 outputs/my-subdomains.txt
+
+Troubleshooting cepat
+
+Kalau masih muncul Please specify -i domains.txt → berarti kamu jalankan tanpa -i atau nama file input salah.
+
+Pastikan domains.txt ada dan tidak kosong.
+
+Jika script butuh akses jaringan, pastikan koneksi internet aktif dan firewall/Git Bash tidak memblokirnya.
+
+Mau saya jalankan perintah contoh mana yang kamu ingin? (Ketik namanya — contoh: bash subdomainfinder.sh -i domains.txt -o outputs/hasil.txt)

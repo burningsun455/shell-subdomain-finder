@@ -1,0 +1,88 @@
+#!/usr/bin/env bash
+# SubdomainFinder v0.5.4 (Windows-ready, cepat, 2 sumber: crt.sh + hackertarget)
+# Usage: ./subdomainfinder.sh -i domains.txt -o outputs/all-subdomains.txt
+# Requires: curl, awk, sort, uniq. jq recommended.
+
+set -euo pipefail
+IFS=$'\n\t'
+
+INPUT_FILE=""
+OUTFILE="outputs/all-subdomains.txt"
+QUIET=0
+USER_AGENT="SubdomainFinder/0.5.4 (+https://example.local)"
+
+print() { [ "$QUIET" -eq 0 ] && printf '%s\n' "$*"; }
+
+usage() {
+  cat <<EOF
+Usage: $0 -i domains.txt [-o output_file] [-q]
+  -i input_file    File containing list of domains (one per line)
+  -o output_file   Save combined results (default: outputs/all-subdomains.txt)
+  -q               Quiet mode
+EOF
+  exit 1
+}
+
+while getopts ":i:o:qh" opt; do
+  case ${opt} in
+    i) INPUT_FILE=$OPTARG ;;
+    o) OUTFILE=$OPTARG ;;
+    q) QUIET=1 ;;
+    h) usage ;;
+    \?) echo "Invalid option: -$OPTARG" >&2; usage ;;
+    :) echo "Option -$OPTARG requires an argument." >&2; usage ;;
+  esac
+done
+shift $((OPTIND -1))
+
+[ -z "$INPUT_FILE" ] && echo "Please specify -i domains.txt" >&2 && usage
+[ ! -f "$INPUT_FILE" ] && echo "Input file $INPUT_FILE not found!" >&2 && exit 1
+
+mkdir -p "$(dirname "$OUTFILE")"
+TMP_DIR=$(mktemp -d -t subfinder.XXXXXX)
+CACHE="${TMP_DIR}/cachelista"
+DATA="${TMP_DIR}/data.json"
+trap 'rm -rf "$TMP_DIR"' EXIT
+
+normalize_file() {
+  awk '{print tolower($0)}' "$1" \
+    | sed 's/^[[:space:]]*//; s/[[:space:]]*$//; s/^\*\.//; s/^\*//' \
+    | sort -u
+}
+
+: > "$OUTFILE"
+print "🌐 SubdomainFinder v0.5.4 starting..."
+printf "📅 Run timestamp: %s\n\n" "$(date -u +"%Y-%m-%dT%H:%M:%SZ")" >> "$OUTFILE"
+
+while IFS= read -r DOMAIN || [ -n "$DOMAIN" ]; do
+  DOMAIN="${DOMAIN%%#*}"
+  DOMAIN="${DOMAIN//[[:space:]]/}"
+  [ -z "$DOMAIN" ] && continue
+
+  print "🔍 Scanning domain: $DOMAIN"
+  : > "$CACHE"
+
+  # --- 1) crt.sh ---
+  curl -sS -A "$USER_AGENT" --max-time 15 "https://crt.sh/?q=%25.${DOMAIN}&output=json" -o "$DATA" || true
+  if [ -s "$DATA" ]; then
+    if command -v jq >/dev/null 2>&1; then
+      jq -r '.[].name_value' "$DATA" >> "$CACHE" || true
+    else
+      grep -oP '"name_value"\s*:\s*"(.*?)"' "$DATA" | sed -E 's/.*"name_value"\s*:\s*"//; s/"$//' | tr ',' '\n' >> "$CACHE" || true
+    fi
+  fi
+
+  # --- 2) hackertarget ---
+  curl -sS -A "$USER_AGENT" --max-time 15 "https://api.hackertarget.com/hostsearch/?q=${DOMAIN}" -o "$DATA" || true
+  [ -s "$DATA" ] && cut -d',' -f1 "$DATA" >> "$CACHE" || true
+
+  normalize_file "$CACHE" >> "$OUTFILE"
+  DOMAIN_COUNT=$(wc -l < "$CACHE" | tr -d ' ')
+  print "✅ Found $DOMAIN_COUNT subdomains for $DOMAIN"
+  print "-----------------------------------------"
+
+done < "$INPUT_FILE"
+
+TOTAL=$(wc -l < "$OUTFILE" | tr -d ' ')
+print "🎉 Scan complete! Total unique subdomains: $TOTAL"
+print "📂 Combined results saved to: $PWD/$OUTFILE"
