@@ -1,0 +1,16 @@
+# Output directories
+outputs/
+results/
+scan_*/
+
+# Log files
+*.log
+*.txt
+
+# System files
+.DS_Store
+Thumbs.db
+
+# Temporary files
+*.tmp
+*.temp
