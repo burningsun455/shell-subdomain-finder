@@ -1,6 +1,0 @@
-api count exceeded - increase quota with membership
-cpanel.mypropboutique.com\ncpcalendars.mypropboutique.com\ncpcontacts.mypropboutique.com\nmail.mypropboutique.com\nmypropboutique.com\nwebdisk.mypropboutique.com\nwebmail.mypropboutique.com\nwww.mypropboutique.com
-cpanel.mypropboutique.com\nmail.mypropboutique.com\nmypropboutique.com\nwebdisk.mypropboutique.com\nwebmail.mypropboutique.com\nwww.mypropboutique.com
-mypropboutique.com
-mypropboutique.com\nmypropboutique.com
-www.mypropboutique.com

@@ -1,6 +1,0 @@
-api count exceeded - increase quota with membership
-autodiscover.shayarifactory.com\ncpanel.shayarifactory.com\ncpcalendars.shayarifactory.com\ncpcontacts.shayarifactory.com\nmail.shayarifactory.com\nshayarifactory.com\nshayarifactory.com.quiztadka.in\nwebdisk.shayarifactory.com\nwebmail.shayarifactory.com\nwww.shayarifactory.com\nwww.shayarifactory.com.quiztadka.in
-autodiscover.shayarifactory.com\ncpanel.shayarifactory.com\ncpcalendars.shayarifactory.com\ncpcontacts.shayarifactory.com\nmail.shayarifactory.com\nshayarifactory.com\nwebdisk.shayarifactory.com\nwebmail.shayarifactory.com\nwww.shayarifactory.com
-shayarifactory.com
-shayarifactory.com\nwww.shayarifactory.com
-www.shayarifactory.com

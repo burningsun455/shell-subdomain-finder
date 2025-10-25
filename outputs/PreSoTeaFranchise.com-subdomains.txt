@@ -1,4 +1,0 @@
-api count exceeded - increase quota with membership
-autodiscover.presoteafranchise.com\ncpanel.presoteafranchise.com\ncpcalendars.presoteafranchise.com\ncpcontacts.presoteafranchise.com\nmail.presoteafranchise.com\npresoteafranchise.com\nwebdisk.presoteafranchise.com\nwebmail.presoteafranchise.com\nwww.presoteafranchise.com
-presoteafranchise.com
-www.presoteafranchise.com

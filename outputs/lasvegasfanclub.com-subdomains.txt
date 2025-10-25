@@ -1,6 +1,0 @@
-api count exceeded - increase quota with membership
-autodiscover.lasvegasfanclub.com\ncpanel.lasvegasfanclub.com\ncpcalendars.lasvegasfanclub.com\ncpcontacts.lasvegasfanclub.com\nlasvegasfanclub.com\nmail.lasvegasfanclub.com\nwebdisk.lasvegasfanclub.com\nwebmail.lasvegasfanclub.com\nwww.lasvegasfanclub.com
-autodiscover.lasvegasfanclub.com\ncpanel.lasvegasfanclub.com\nlasvegasfanclub.com\nmail.lasvegasfanclub.com\nwebdisk.lasvegasfanclub.com\nwebmail.lasvegasfanclub.com\nwww.lasvegasfanclub.com
-lasvegasfanclub.com\nlasvegasfanclub.com
-lasvegasfanclub.com\nmail.lasvegasfanclub.com\nwww.lasvegasfanclub.com
-lasvegasfanclub.com\nwww.lasvegasfanclub.com

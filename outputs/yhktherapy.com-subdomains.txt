@@ -1,7 +1,0 @@
-api count exceeded - increase quota with membership
-autodiscover.yhktherapy.com\ncpanel.yhktherapy.com\nmail.yhktherapy.com\nwebdisk.yhktherapy.com\nwebmail.yhktherapy.com\nwww.yhktherapy.com\nyhktherapy.com
-preview.yhktherapy.com
-preview.yhktherapy.com\nwww.preview.yhktherapy.com
-www.yhktherapy.com
-www.yhktherapy.com\nyhktherapy.com
-yhktherapy.com
